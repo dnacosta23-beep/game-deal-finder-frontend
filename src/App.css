@@ -3,9 +3,18 @@ body {
   font-family: "Press Start 2P", monospace;
   color: #fff7d6;
   background-color: #080b1a;
+
   background-image:
-    linear-gradient(rgba(48, 238, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(48, 238, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(
+      rgba(48, 238, 255, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(48, 238, 255, 0.05) 1px,
+      transparent 1px
+    );
+
   background-size: 32px 32px;
 }
 
@@ -23,18 +32,24 @@ input {
 h1 {
   color: #30eeff;
   line-height: 1.5;
+
   text-shadow:
     3px 3px 0 #ff3cac,
     6px 6px 0 #37295f;
 }
 
+/* Search input */
+
 input {
   width: min(100%, 420px);
   padding: 1rem;
+
   color: #fff7d6;
   background-color: #11152b;
+
   border: 4px solid #30eeff;
   outline: none;
+
   box-shadow: 5px 5px 0 #37295f;
 }
 
@@ -42,13 +57,18 @@ input:focus {
   border-color: #ff3cac;
 }
 
+/* General buttons */
+
 button {
   margin-left: 0.75rem;
   padding: 1rem;
+
   color: #080b1a;
   background-color: #ffcf33;
+
   border: 4px solid #fff7d6;
   box-shadow: 5px 5px 0 #ff3cac;
+
   cursor: pointer;
 }
 
@@ -57,17 +77,26 @@ button:hover {
   box-shadow: 3px 3px 0 #ff3cac;
 }
 
+/* Deal grid */
+
 .deals-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns:
+    repeat(auto-fit, minmax(240px, 1fr));
+
   gap: 1.5rem;
   margin-top: 2rem;
 }
 
+/* Deal cards */
+
 .deal-card {
   padding: 1rem;
+
   background-color: #141832;
+
   border: 4px solid #7c5cff;
+
   box-shadow:
     7px 7px 0 #2a1e4f,
     10px 10px 0 #080b1a;
@@ -76,27 +105,36 @@ button:hover {
 .deal-card img {
   width: 100%;
   height: 130px;
+
   object-fit: contain;
+
   background-color: #080b1a;
+
   border: 3px solid #30eeff;
 }
 
 .deal-card h2 {
   color: #ffcf33;
+
   font-size: 0.9rem;
   line-height: 1.6;
 }
 
 .deal-card p {
   color: #d8d4ff;
+
   font-size: 0.65rem;
   line-height: 1.7;
 }
 
+/* Header */
+
 .game-header h1 {
   color: #30eeff;
+
   font-size: 2.8rem;
   line-height: 1.4;
+
   text-shadow:
     3px 3px 0 #ff3cac,
     6px 6px 0 #37295f;
@@ -104,13 +142,16 @@ button:hover {
 
 .system-text {
   color: #62ff87;
-  font-size: .75rem;
-  letter-spacing: .3rem;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.3rem;
+
   animation: blink 1.2s infinite;
 }
 
 .tagline {
   color: #ffcf33;
+
   font-size: 1.1rem;
   line-height: 1.8;
   letter-spacing: 3px;
@@ -128,12 +169,18 @@ button:hover {
   }
 }
 
+/* Search console */
+
 .search-console {
   max-width: 700px;
+
   margin: 2rem auto;
   padding: 2rem;
+
   border: 4px solid #30eeff;
+
   background-color: rgba(20, 24, 50, 0.95);
+
   box-shadow:
     8px 8px 0 #37295f,
     0 0 30px rgba(48, 238, 255, 0.2);
@@ -142,16 +189,22 @@ button:hover {
 .search-console h2 {
   margin-top: 0;
   margin-bottom: 1.5rem;
+
   color: #30eeff;
+
   text-align: center;
+
   font-size: 1.4rem;
   line-height: 1.5;
 }
 
 .search-console label {
   display: block;
-  margin-bottom: .75rem;
+
+  margin-bottom: 0.75rem;
+
   color: #62ff87;
+
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -159,5 +212,95 @@ button:hover {
 .search-row {
   display: flex;
   gap: 1rem;
+
   margin-top: 1rem;
+}
+
+/* Deal card buttons */
+
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+/*
+  Both the <a> View Deal link and the
+  <button> Save Deal button use this class.
+*/
+
+.arcade-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 64px;
+
+  margin: 0;
+  padding: 0.75rem 1rem;
+
+  box-sizing: border-box;
+
+  color: #080b1a;
+  background-color: #ffcf33;
+
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+
+  border: 4px solid #fff7d6;
+
+  box-shadow: 5px 5px 0 #ff3cac;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.arcade-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 #ff3cac;
+}
+
+.arcade-button:active {
+  transform: translate(5px, 5px);
+  box-shadow: none;
+}
+
+/* Mobile layout */
+
+@media (max-width: 700px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .game-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .search-row {
+    flex-direction: column;
+  }
+
+  .search-row input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .search-row button {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.saved-games-page {
+  padding: 2rem 2.5rem;
 }
