@@ -304,3 +304,12 @@ button:hover {
 .saved-games-page {
   padding: 2rem 2.5rem;
 }
+
+.saved-search {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

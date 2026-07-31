@@ -3,6 +3,7 @@ import { getSavedDeals, deleteSavedDeal, } from "../services/api";
 
 function SavedGamesPage() {
   const [savedDeals, setSavedDeals] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function loadSavedDeals() {
@@ -14,29 +15,48 @@ function SavedGamesPage() {
     loadSavedDeals();
   }, []);
 
- async function handleDeleteDeal(id) {
-  const confirmed = window.confirm(
-    "Are you sure you want to delete this saved deal?"
-  );
+  async function handleDeleteDeal(id) {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this saved deal?"
+    );
 
-  if (!confirmed) {
-    return;
+    if (!confirmed) {
+      return;
+    }
+
+    await deleteSavedDeal(id);
+
+    const updatedDeals = await getSavedDeals();
+
+    setSavedDeals(updatedDeals);
   }
 
-  await deleteSavedDeal(id);
-
-  const updatedDeals = await getSavedDeals();
-
-  setSavedDeals(updatedDeals);
-}
+  const filteredDeals = savedDeals.filter((deal) =>
+    deal.title
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
 
   return (
     <div className="saved-games-page">
-
       <h1>💾 SAVED GAMES</h1>
 
+      <div className="saved-search">
+        <label htmlFor="saved-game-search">
+          SEARCH SAVED GAMES
+        </label>
+
+        <input
+          id="saved-game-search"
+          type="text"
+          placeholder="Search your saved games..."
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+      </div>
+
       <div className="deals-list">
-        {savedDeals.map((deal) => (
+        {filteredDeals.map((deal) => (
           <div
             className="deal-card"
             key={deal.id}
@@ -45,24 +65,24 @@ function SavedGamesPage() {
               src={deal.thumb}
               alt={deal.title}
             />
-        <h2>{deal.title}</h2>
 
-        <p>Store: {deal.store}</p>
+            <h2>{deal.title}</h2>
 
-        <p>Sale Price: ${deal.sale_price}</p>
+            <p>Store: {deal.store}</p>
 
-        <p>Normal Price: ${deal.normal_price}</p>
+            <p>Sale Price: ${deal.sale_price}</p>
 
-        <p>Savings: {deal.savings}%</p>
+            <p>Normal Price: ${deal.normal_price}</p>
 
-        <button
-        className="arcade-button"
-        onClick={() => handleDeleteDeal(deal.id)}
-        >
-        🗑 DELETE DEAL
-        </button>
+            <p>Savings: {deal.savings}%</p>
 
-        </div>
+            <button
+              className="arcade-button"
+              onClick={() => handleDeleteDeal(deal.id)}
+            >
+              🗑 DELETE DEAL
+            </button>
+          </div>
         ))}
       </div>
     </div>
